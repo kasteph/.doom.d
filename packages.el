@@ -1,4 +1,7 @@
 (package! citar-org-roam)
 (package! org-roam-ui)
 (package! org-ref)
+(package! pinentry)
+;; (package! pinentry-emacs :recipe (:host github :repo "ecraven/pinentry-emacs"))
+(package! codeium :recipe (:host github :repo "Exafunction/codeium.el"))
 (unpin! lsp-python-ms)

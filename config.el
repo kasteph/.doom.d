@@ -21,21 +21,21 @@
 
 (after! org
   (setq org-capture-templates
-      `(("w" "Work" entry (file "~/Documents/org/work.org")
-        "* [ ] %?\n" :prepend t)
-        ("p" "Personal" entry (file "~/Documents/org/personal.org")
-         "* [ ] %?\n" :prepend t)
-        ("n" "Notes" entry (file "~/Documents/org/notes.org")
-         "* %?\n")
-        ("s" "Slipbox" entry (file "~/Documents/org/roam/inbox.org")
-         "* %?\n"))))
+        `(("w" "Work" entry (file "~/Documents/org/work.org")
+           "* [ ] %?\n" :prepend t)
+          ("p" "Personal" entry (file "~/Documents/org/personal.org")
+           "* [ ] %?\n" :prepend t)
+          ("n" "Notes" entry (file "~/Documents/org/notes.org")
+           "* %?\n")
+          ("s" "Slipbox" entry (file "~/Documents/org/roam/inbox.org")
+           "* %?\n"))))
 
 (defun kasteph/org-capture-slipbox()
   (interactive)
   (org-capture nil "s"))
 
 (use-package! websocket
-    :after org-roam)
+  :after org-roam)
 
 (use-package! org-roam
   :init
@@ -64,17 +64,17 @@
            :unnarrowed t)))
 
   (defun kasteph/tag-new-node-as-draft ()
-      (org-roam-tag-add '("draft")))
+    (org-roam-tag-add '("draft")))
   (add-hook 'org-roam-capture-new-node-hook #'kasteph/tag-new-node-as-draft))
 
 
 (use-package! org-roam-ui
-    :after org-roam
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 (after! bibtex-completion
   (setq! bibtex-completion-notes-path (concat org-roam-directory "references/")
@@ -116,3 +116,5 @@
   org-noter-notes-search-path citar-notes-paths)
 
 (setq lsp-pyls-server-command "/Users/kasteph/.local/bin/pylsp")
+
+(setq epg-pinentry-mode `loopback)
