@@ -4,7 +4,10 @@
       doom-theme 'doom-tokyo-night
       doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15)
-      fill-column 79)
+      fill-column 79
+      require-final-newline t
+      next-line-add-newlines nil)
+
 
 (setq org-directory "~/Documents/org/"
       org-log-done 'time
@@ -118,3 +121,12 @@
 (setq lsp-pyls-server-command "/Users/kasteph/.local/bin/pylsp")
 
 (setq epg-pinentry-mode `loopback)
+
+(use-package reformatter
+  :hook
+  (python-mode . ruff-format-on-save-mode)
+  (python-ts-mode . ruff-format-on-save-mode)
+  :config
+  (reformatter-define ruff-format
+    :program "ruff"
+    :args `("format" "--stdin-filename" ,buffer-file-name "-")))
