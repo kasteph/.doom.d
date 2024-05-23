@@ -6,8 +6,8 @@
       doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15)
       fill-column 79
       require-final-newline t
-      next-line-add-newlines nil)
-
+      next-line-add-newlines t
+      auth-sources '("~/.authinfo"))
 
 (setq org-directory "~/Documents/org/"
       org-log-done 'time
@@ -130,3 +130,11 @@
   (reformatter-define ruff-format
     :program "ruff"
     :args `("format" "--stdin-filename" ,buffer-file-name "-")))
+
+(map! :leader
+      :prefix ("og" . "gptel")
+      :desc "gptel-buffer" "b" #'gptel
+      :desc "gptel-menu" "m" #'gptel-menu
+      :desc "gptel-send" "s" #'gptel-send)
+
+(load! "+advice")
