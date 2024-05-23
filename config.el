@@ -137,4 +137,3 @@
       :desc "gptel-menu" "m" #'gptel-menu
       :desc "gptel-send" "s" #'gptel-send)
 
-(load! "+advice")
